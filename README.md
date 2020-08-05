@@ -65,24 +65,6 @@ const [isLoaded, setIsLoaded ]  = useState(false)
 }
 }
 ```
-<h3>Step 3</h3>
-<p>In order to adapt size the video according to the device width, I put the property innerWidth in the state component:</p>
-```javaScript
-  render(){
-    return (
-      {this.state.loading && (
-         <video
-           muted
-           playsInline
-           autoPlay
-           poster={poster}
-           style={{ width: "100%" }}
-          >
-           <source src={videoBg} type="video/mp4" />
-          </video>
-     )}
-    )
-  }
 
-```
+
 
