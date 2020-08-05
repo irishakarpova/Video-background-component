@@ -66,8 +66,24 @@ export default () => {
 ```
 <h3>Step 3</h3>
 <p>In order to adapt size the video according to the device width, I put the property innerWidth in the state component:</p>
-<pre>const [width] = useState(window.innerWidth)</pre>
+
+```javaScript
+ const [width] = useState(window.innerWidth)
+
+```
 <p>Depending on the condition, I show the correct video:</p>
+<pre><source src={ width > 1000 ? mobileVideo: desktopVideo } type="video/mp4" /></pre>
+
+<p>In the case that I have different versions of video, I can use the switch statement</p>
+  
+```javaScript
+  const getVideo = (scrWidth) => {
+    if(scrWidth >= 768) return desktopVideo
+    return mobileVideo
+  }
+
+```
+
 
 
 
