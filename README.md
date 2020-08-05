@@ -40,32 +40,33 @@ However, I want to ensure a number of issues that could impact performance are s
 ```javaScript
 export default () => {
  
-const [isLoaded, setIsLoaded ]  = useState(false)
-  useEffect(() => {
-    window.addEventListener("load", () => {
-        setIsLoaded(true)
+  const [isLoaded, setIsLoaded ]  = useState(false)
+    useEffect(() => {
+      window.addEventListener("load", () => {
+          setIsLoaded(true)
+      })
     })
-  })
-    return (
-        {isLoaded ? (
-          <video
-            muted
-            playsInline
-            autoPlay
-            loop
-            poster={poster}
-            style={{ position: "fixed", height: "100px" }}
-           >
-           <source src={videoBg} type="video/mp4" />
-           </video>
-        ):
-          <img src={poster} style={{margin: 0, height: '100px'}} alt='tatatata'/> }
-    )
-}
+    
+  return (
+      {isLoaded ? (
+        <video
+          muted
+          playsInline
+          autoPlay
+          loop
+          poster={poster}
+          style={{ position: "fixed", height: "100px" }}
+          >
+          <source src={videoBg} type="video/mp4" />
+          </video>
+      ):
+        <img src={poster} style={{margin: 0, height: '100px'}} alt='tatatata'/> 
+      })
 }
 ```
 <h3>Step 3</h3>
 <p>In order to adapt size the video according to the device width, I put the property innerWidth in the state component:</p>
+<code>const [width] = useState(window.innerWidth)</code>
 
 
 
