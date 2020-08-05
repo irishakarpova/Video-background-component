@@ -72,7 +72,11 @@ export default () => {
 
 ```
 <p>Depending on the condition, I show the correct video:</p>
-<pre><source src={ width > 1000 ? mobileVideo: desktopVideo } type="video/mp4" /></pre>
+
+```javaScript
+  <source src={ width > 1000 ? mobileVideo: desktopVideo } type="video/mp4" />
+
+```
 
 <p>In the case that I have different versions of video, I can use the switch statement</p>
   
