@@ -88,6 +88,56 @@ export default () => {
 
 ```
 
+<p>Finally, I call the function</p>
+
+```javaScript
+  <source src={ getVideo(scrWidth) } type="video/mp4" />
+
+```
+ <h3>Conclusion</h3>
+ <p>I created a small functional component with no third-party libraries that displays a video on the web page.</p>
+ 
+ ```javaScript
+ import React, { useEffect, useState } from 'react';
+import desktopVideo from './video/forest.mov';
+import mobileVideo from './video/Smoke_Light_08_Videvo.mov'
+import poster from './img/image_bg.png'
+import './App.css';
+ 
+export default () => {
+  const [isLoaded, setIsLoaded ]  = useState(false)
+  const [scrWidth] = useState(window.innerWidth)
+ 
+  useEffect(()=>{
+    window.addEventListener("load", () => {
+        setIsLoaded(true)
+    })
+  })
+ 
+  return(
+    <div className='video-wrap'
+         style={{opacity: isLoaded ? 1 : 0, transition: 'opacity 2s ease'}}>
+      {isLoaded ? (
+        <video
+          muted
+          playsInline
+          autoPlay
+          loop
+          poster={poster}
+          className='video-content'>
+         <source src={ scrWidth > 1000 ? desktopVideo : mobileVideo } type="video/mp4" />
+         </video>
+      ):
+        <img src={poster} style={{margin: 0, height: '100%', opacity: 0}} alt='tatatata'/> }
+    </div>
+  )
+}
+
+```
+
+
+
+
 
 
 
