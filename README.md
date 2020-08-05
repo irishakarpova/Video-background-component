@@ -66,7 +66,8 @@ export default () => {
 ```
 <h3>Step 3</h3>
 <p>In order to adapt size the video according to the device width, I put the property innerWidth in the state component:</p>
-<code>const [width] = useState(window.innerWidth)</code>
+<pre>const [width] = useState(window.innerWidth)</pre>
+<p>Depending on the condition, I show the correct video:</p>
 
 
 
