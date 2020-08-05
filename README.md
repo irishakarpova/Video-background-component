@@ -8,7 +8,8 @@ However, I want to ensure a number of issues that could impact performance are s
 <li>Videos are adapted to different screen sizes</li>
 <li>The video background appears smooth and transitions after the rest of the page is loaded</li>
 </ul>
-<h3>Step 1. Creating the React component that contains the video tags in JSX.</h3>
+<h3>Step 1</h3>
+<p>Creating the React component that contains the video tags in JSX.</p>
   
 ```javaScript
   render(){
@@ -46,7 +47,6 @@ const [isLoaded, setIsLoaded ]  = useState(false)
     })
   })
     return (
-      <>
         {isLoaded ? (
           <video
             muted
@@ -60,11 +60,12 @@ const [isLoaded, setIsLoaded ]  = useState(false)
            </video>
         ):
           <img src={poster} style={{margin: 0, height: '100px'}} alt='tatatata'/> }
-      </>
     )
 }
 }
 ```
+<h3>Step 3</h3>
+<p>In order to adapt size the video according to the device width, I put the property innerWidth in the state component:</p>
 
 
 
