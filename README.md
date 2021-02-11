@@ -40,11 +40,17 @@ However, I want to ensure a number of issues that could impact performance are s
 export default () => {
  
   const [isLoaded, setIsLoaded ]  = useState(false)
-    useEffect(() => {
-      window.addEventListener("load", () => {
-          setIsLoaded(true)
-      })
-    })
+  
+  const loadVideo = () => {
+      setIsLoaded(true)
+  }
+
+  useEffect(() => {
+    window.addEventListener("load", loadVideo)
+    return () => {
+      window.removeEventListener('load', loadVideo);
+    };
+  })
     
   return (
       {isLoaded ? (
@@ -107,10 +113,15 @@ export default () => {
   const [isLoaded, setIsLoaded ]  = useState(false)
   const [scrWidth] = useState(window.innerWidth)
  
-  useEffect(()=>{
-    window.addEventListener("load", () => {
-        setIsLoaded(true)
-    })
+  const loadVideo = () => {
+      setIsLoaded(true)
+  }
+
+  useEffect(() => {
+    window.addEventListener("load", loadVideo)
+    return () => {
+      window.removeEventListener('load', loadVideo);
+    };
   })
  
   return(
