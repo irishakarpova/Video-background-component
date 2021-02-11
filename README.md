@@ -20,10 +20,9 @@ However, I want to ensure a number of issues that could impact performance are s
            playsInline
            autoPlay
            poster={poster}
-           style={{ width: "100%" }}
-          >
+           style={{ width: "100%" }} >
            <source src={videoBg} type="video/mp4" />
-          </video>
+         </video>
      )}
     )
   }
@@ -58,7 +57,7 @@ export default () => {
           style={{ position: "fixed", height: "100px" }}
           >
           <source src={videoBg} type="video/mp4" />
-          </video>
+         </video>
       ):
         <img src={poster} style={{margin: 0, height: '100px'}} alt='tatatata'/> 
       })
