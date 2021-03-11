@@ -4,7 +4,7 @@ import mobileVideo from './video/video-mobile.mov'
 import poster from './img/image_bg.jpg'
 import './App.css';
 
-const BgComponent = (props) => {
+const App = (props) => {
 
   const [isLoaded, setIsLoaded ]  = useState(false)
   const [scrWidth] = useState(window.innerWidth)
@@ -13,7 +13,7 @@ const BgComponent = (props) => {
       setIsLoaded(true)
   }
 
-  useEffect((props) => {
+  useEffect(() => {
     if(props.renderOnLoad) {
       window.addEventListener("load", loadVideo)
       return () => {
@@ -49,4 +49,4 @@ const BgComponent = (props) => {
   )
 }
 
-export default BgComponent
+export default App
