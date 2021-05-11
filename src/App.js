@@ -4,20 +4,23 @@ import mobileVideo from './video/video-mobile.mov'
 import poster from './img/image_bg.jpg'
 import './App.css';
 
-export default ()=> {
+export default (props)=> {
 
-  const [isLoaded, setIsLoaded ]  = useState(false)
+  const [isLoaded, setIsLoaded ]  = useState(!props.renderOnLoad)
   const [scrWidth] = useState(window.innerWidth)
 
+  const loadVideo = () => {
+    setIsLoaded(true)
+  }
+
   useEffect(() => {
-    window.addEventListener("load", () => {
-        setIsLoaded(true)
-    })
-    return()=>{
-      window.removeEventListener("load", () => {
-        setIsLoaded(false)
-    })
+    if(!props.renderOnLoad)  {
+      return;
     }
+    window.addEventListener("load", loadVideo)
+    return () => {
+      window.removeEventListener('load', loadVideo);
+    };
   }, [isLoaded])
 
   const getVideo = (scrWidth) => {
