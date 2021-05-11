@@ -13,7 +13,12 @@ export default ()=> {
     window.addEventListener("load", () => {
         setIsLoaded(true)
     })
-  })
+    return()=>{
+      window.removeEventListener("load", () => {
+        setIsLoaded(false)
+    })
+    }
+  }, [isLoaded])
 
   const getVideo = (scrWidth) => {
     if(scrWidth >= 768) return desktopVideo
