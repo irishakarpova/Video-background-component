@@ -44,7 +44,7 @@ export default (props) => {
         src={poster}
         style={{
           opacity: isLoaded ? 0 : 1,
-          transition: "opacity 4s ease 0ms",
+          transition: "opacity 8s ease 0ms",
         }}
         className={classes["img-content"]}
         alt="video background"
