@@ -1,0 +1,19 @@
+.video-wrap {
+  position: relative;
+  width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+.video-content {
+  position: absolute;
+  z-index: 1;
+  object-fit: none;
+}
+.img-content {
+  position: relative;
+  z-index: 0;
+  object-fit: none;
+  height: 100%;
+}

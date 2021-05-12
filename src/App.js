@@ -1,42 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import desktopVideo from './video/video_desc.mov';
-import mobileVideo from './video/video_mobile.mp4'
-import poster from './img/image_bg.jpg'
-import './App.css';
+import React, { useEffect, useState } from "react";
+import desktopVideo from "./video/video-desctop.mov";
+import mobileVideo from "./video/video-mobile.mov";
+import poster from "./img/image_bg.jpg";
+import classes from "./App.module.css";
 
-export default ()=> {
+export default (props) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [scrWidth] = useState(window.innerWidth);
 
-  const [isLoaded, setIsLoaded ]  = useState(false)
-  const [scrWidth] = useState(window.innerWidth)
+  const loadVideo = () => {
+    setIsLoaded(true);
+  };
 
   useEffect(() => {
-    window.addEventListener("load", () => {
-        setIsLoaded(true)
-    })
-  })
+    window.addEventListener("load", loadVideo);
+    return () => {
+      window.removeEventListener("load", loadVideo);
+    };
+  }, []);
 
   const getVideo = (scrWidth) => {
-    if(scrWidth >= 768) return desktopVideo
-    return mobileVideo
-  }
+    if (scrWidth >= 768) return desktopVideo;
+    return mobileVideo;
+  };
 
+  return (
+    <div className={classes["video-wrap"]}>
+      <video
+        style={{
+          opacity: isLoaded ? 1 : 0,
+          transition: "opacity 2s ease 0ms",
+        }}
+        muted
+        playsInline
+        autoPlay
+        loop
+        className={classes["video-content"]}
+      >
+        <source src={getVideo(scrWidth)} type="video/mp4" />
+      </video>
 
-  return(
-    <div className='video-wrap'
-         style={{opacity: isLoaded ? 1 : 0, transition: 'opacity 2s ease'}}>
-
-      {isLoaded ? (
-        <video
-          muted
-          playsInline
-          autoPlay
-          loop
-          poster={poster}
-          className='video-content'>
-         <source src={ getVideo(scrWidth) } type="video/mp4" />
-         </video>
-      ):
-        <img src={poster}  alt='video background'/> }
+      <img
+        src={poster}
+        style={{
+          opacity: isLoaded ? 0 : 1,
+          transition: "opacity 4s ease 0ms",
+        }}
+        className={classes["img-content"]}
+        alt="video background"
+      />
     </div>
-  )
-}
+  );
+};
